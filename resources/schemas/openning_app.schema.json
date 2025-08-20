@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["eventType", "_id", "timestamp"],
+  "properties": {
+    "_fahorro": {
+      "type": "object",
+      "required": ["appInteractionAttributes"],
+      "properties": {
+        "appInteractionAttributes": {
+          "type": "object",
+          "required": ["deepLinkSource", "deepLinkType", "environment", "deepLinkCampaign", "deepLinkMedium", "deepLink"],
+          "properties": {
+            "deepLinkSource": { "type": "string" },
+            "deepLinkType": { "type": "string" },
+            "environment": { "type": "string" },
+            "deepLinkCampaign": { "type": "string" },
+            "deepLinkMedium": { "type": "string" },
+            "deepLink": { "type": "string" }
+          },
+          "additionalProperties": true
+        },
+        "appInteractionEvents": { "type": "object" },
+        "appInformation": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "environment": { "type": "object" },
+    "application": { "type": "object" },
+    "identityMap": { "type": "object" },
+    "eventType": { "type": "string", "const": "application.openning_app" },
+    "_id": { "type": "string" },
+    "placeContext": { "type": "object" },
+    "device": { "type": "object" },
+    "timestamp": { "type": "string" }
+  },
+  "additionalProperties": true
+}
