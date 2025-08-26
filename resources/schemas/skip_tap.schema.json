@@ -1,0 +1,73 @@
+{
+  "$id": "https://example.com/fahorro-skip-tap.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Fahorro Skip Tap Event",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "_fahorro",
+    "environment",
+    "application",
+    "identityMap",
+    "eventType",
+    "_id",
+    "placeContext",
+    "device",
+    "timestamp"
+  ],
+  "properties": {
+    "_fahorro": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["appInteractionAttributes", "appInteractionEvents", "appInformation"],
+      "properties": {
+        "appInteractionAttributes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["environment"],
+          "properties": {
+            "environment": { "type": "string" }
+          }
+        },
+        "appInteractionEvents": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["skipTap"],
+          "properties": {
+            "skipTap": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["value"],
+              "properties": {
+                "value": { "type": "integer", "minimum": 0 }
+              }
+            }
+          }
+        },
+        "appInformation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["appStateDetails"],
+          "properties": {
+            "appStateDetails": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["screenName"],
+              "properties": {
+                "screenName": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "environment": { "type": "object" },
+    "application": { "type": "object" },
+    "identityMap": { "type": "object" },
+    "eventType": { "type": "string", "const": "application.skip_tap" },
+    "_id": { "type": "string" },
+    "placeContext": { "type": "object" },
+    "device": { "type": "object" },
+    "timestamp": { "type": "string"}
+  }
+}

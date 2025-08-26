@@ -7,7 +7,7 @@ Library    BuiltIn
 *** Variables ***
 
 *** Keywords ***
-Cuando hagamos la busqueda de los datos en el CDP del evento
+Y hagamos la busqueda de los datos en el CDP del evento
     [Arguments]    ${evento}
     Set Test Variable    ${evento}    ${evento}
     ${API_KEY}=    Get Variable Value    ${API_KEY}
@@ -44,7 +44,7 @@ Cuando hagamos la busqueda de los datos en el CDP del evento
     ...    orderby=-timestamp
     ...    property=eventType="application.${evento}"
 
-    Sleep    5 minutes
+    Sleep    10 minutes
 
     Create Session    ApiEventsCDP    https://platform.adobe.io    disable_warnings=1
     ${responseEventCDP}=    Get On Session    ApiEventsCDP    /data/core/ups/access/entities    params=${params}    headers=${headers}

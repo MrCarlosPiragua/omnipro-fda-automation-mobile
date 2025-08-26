@@ -2,9 +2,6 @@ APPIUM_SERVER: "http://127.0.0.1:4723/wd/hub"
 PLATFORM: "Android"
 AUTOMATION_NAME: "UiAutomator2"
 DEVICE_NAME: "emulator-5554"
-NO_RESET: false
-AUTO_GRANT_PERMISSIONS: true
-NEW_COMMAND_TIMEOUT: 120
 # Si pruebas una app instalada, usa appPackage/appActivity
 APP_PACKAGE: "mx.com.fahorro2"
 APP_ACTIVITY: "com.app.farmaciasdelahorro.MainActivity"
