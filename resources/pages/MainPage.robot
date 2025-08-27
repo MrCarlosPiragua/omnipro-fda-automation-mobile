@@ -22,7 +22,8 @@ Resource    ../../resources/support/actionsUtils.robot
 ...    SALIR_DE_CARRITO_DE_COMPRAS_VACIO=xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]
 ...    BOTON_PROCEDER_CON_EL_PAGO=accessibility_id=Proceder al pago
 ...    BOTON_PROCEDER_CON_EL_PAGO_SI=accessibility_id=Si
-...    PAGO_EFECTIVO_AL_RECIBIR=accessibility_id=Pago en Efectivo al Recibir
+...    CONTINUAR_SIN_PROPINA=accessibility_id=Continuar sin propina
+...    METODO_DE_PAGO_EFECTIVO_AL_RECIBIR=accessibility_id=Pago en Efectivo al Recibir
 ...    CAMBIAR_DIRECCION_ENVIO=accessibility_id=Cambiar
 ...    AGREGAR_METODO_DE_PAGO=accessibility_id=Añadir método de pago
 ...    MENU_TAP_PROMOCIONES=accessibility_id=Promociones
@@ -30,12 +31,21 @@ Resource    ../../resources/support/actionsUtils.robot
 ...    SELECCIONAR_DIRECCION_ENVIO=xpath=(//android.view.View)[6]
 ...    DIRECCION_OTRO=xpath=(//android.widget.ImageView)[2]
 ...    MENU_SELECCIONAR_CERRAR_SESION=accessibility_id=Cerrar sesión
+...    MENU_SELECCIONAR_MIS_PEDIDOS=accessibility_id=Mis Pedidos
 ...    CONFIRMAR_CERRAR_SESION=accessibility_id=Sí
 ...    BOTON_COMPARTIR_PRODUCTO=xpath=(//android.widget.ImageView[1])[1]
 ...    BOTON_AGREGAR_A_LA_LISTA_DE_DESEADOS=xpath=(//android.widget.ImageView[1])[2]
 ...    LISTA_ARTICULOS_DESEADOS=accessibility_id=Lista de artículos deseados
 ...    MENU_SELECCIONAR_FAVORITOS=accessibility_id=Favoritos
 ...    BOTON_ELIMINAR_ITEM_2_DE_LA_LISTA_DE_DESEADOS=xpath=(//android.view.View[@content-desc="Eliminar"])[2]
+...    SELECCIONAR_BANNER_DE_PROMOCIONES=xpath=//android.widget.ScrollView/android.view.View[4]/android.view.View/android.widget.ImageView
+...    SELECCIONAR_CATEGORIA=accessibility_id=Categoría
+...    CATEGORIA_FARMACIA=accessibility_id=Farmacia
+...    BOTON_VER_RESULTADOS_EN_CATEGORIA=accessibility_id=Ver resultados
+...    SELECCIONAR_PRIMER_ITEM_DESPUES_DE_BUSQUEDA=xpath=(//android.view.View)[9]
+...    SELECCIONAR_CATEGORIA_BEBES=accessibility_id=Bebés
+...    SELECCIONAR_SUB_CATEGORIA_DE_BEBES_FORMULA_LACTEAS=accessibility_id=Fórmulas Lácteas
+...    SELECCIONAR_SUB_CATEGORIA_DE_FORMULA_LACTEAS_ESPECIALIDAD=accessibility_id=Especialidad
 
 &{HOME_IOS_LOCATORS}
 
@@ -79,6 +89,10 @@ Y busquemos el producto ${producto}
     Input Text    ${INPUT_BUSCAR}    ${producto}
     Sleep    5s
 
+Y buscamos para tener la lista de resultados
+    Press Keycode    66
+    Sleep    5s
+
 Y seleccionamos el primer producto
     ${PRIMERA_SELECCION_BUSQUEDA}=    _locator    PRIMERA_SELECCION_BUSQUEDA
     Wait Until Element Is Visible    ${PRIMERA_SELECCION_BUSQUEDA}    5s
@@ -90,12 +104,18 @@ Y se agregua el producto al carrito
     Scroll Down    ${BOTON_AGREGAR_PRODUCTO_AL_CARRITO}
     Tap    ${BOTON_AGREGAR_PRODUCTO_AL_CARRITO}    duration=0.5s
 
-Y reviso el carrito de compras
+Y ${tipoDeAccion} el carrito de compras
     ${BOTON_CARRITO_DE_COMPRAS_CON_COMPRA}=    _locator    BOTON_CARRITO_DE_COMPRAS
-    Wait Until Element Is Visible    ${BOTON_CARRITO_DE_COMPRAS_CON_COMPRA}    10s
-    Tap    ${BOTON_CARRITO_DE_COMPRAS_CON_COMPRA}    duration=0.5s
-    Sleep    5s
-
+    ${VACIAR_CARRITO_DE_COMPRAS}=    _locator    VACIAR_CARRITO_DE_COMPRAS
+    IF    "${tipoDeAccion}" == "reviso"
+        Wait Until Element Is Visible    ${BOTON_CARRITO_DE_COMPRAS_CON_COMPRA}    10s
+        Tap    ${BOTON_CARRITO_DE_COMPRAS_CON_COMPRA}    duration=0.5s
+        Sleep    5s
+    ELSE IF    "${tipoDeAccion}" == "limpio"
+        Tap    ${VACIAR_CARRITO_DE_COMPRAS}    duration=0.5s
+        Sleep    5s
+    END
+    
 Y al intentar editar un producto del carrito
     ${IMG_PRODUCTO_EN_CARRITO_DE_COMPRAS}=    _locator    IMG_PRODUCTO_EN_CARRITO_DE_COMPRAS
     Wait Until Element Is Visible    ${IMG_PRODUCTO_EN_CARRITO_DE_COMPRAS}    10s
@@ -135,17 +155,6 @@ Y agregamos otro metodo de pago
     Wait Until Element Is Visible    ${AGREGAR_METODO_DE_PAGO}    10s
     Tap    ${AGREGAR_METODO_DE_PAGO}    duration=0.5s
 
- Y seleccionamos el servicio de Orientacion medica
-    ${SERVICIO_ORIENTACION_MEDICA}=    _locator    SERVICIO_ORIENTACION_MEDICA
-    ${MEDICO_SUCURSAL}=    _locator    MEDICO_SUCURSAL
-    Scroll Down    ${SERVICIO_ORIENTACION_MEDICA}
-    Sleep    1s
-    Tap    ${SERVICIO_ORIENTACION_MEDICA}    duration=0.5s
-    Sleep    2s
-    Tap    ${MEDICO_SUCURSAL}    duration=0.5s
-    Sleep    5s
-
-
 Y naveguemos al menu de ${tapEnElMenu}
     IF    "${tapEnElMenu}" == "Promociones"
         ${MENU_TAP_PROMOCIONES}=    _locator    MENU_TAP_PROMOCIONES
@@ -156,7 +165,6 @@ Y naveguemos al menu de ${tapEnElMenu}
         Wait Until Element Is Visible    ${MENU_TAP_CUENTA}    5s
         Tap    ${MENU_TAP_CUENTA}    duration=0.5s
     END
-
 
 Y intentemos seleccionar una direccion de envio
     ${SELECCIONAR_DIRECCION_ENVIO}=    _locator    SELECCIONAR_DIRECCION_ENVIO
@@ -173,6 +181,12 @@ Y vamos a la seccion de ${tapCuentaMenu}
         ${MENU_SELECCIONAR_CERRAR_SESION}=    _locator    MENU_SELECCIONAR_CERRAR_SESION
         Wait Until Element Is Visible    ${MENU_SELECCIONAR_CERRAR_SESION}    5s
         Tap    ${MENU_SELECCIONAR_CERRAR_SESION}    duration=0.5s
+        Sleep    2s
+    ELSE IF    "${tapCuentaMenu}" == "Mis Pedidos"
+        ${MENU_SELECCIONAR_MIS_PEDIDOS}=    _locator    MENU_SELECCIONAR_MIS_PEDIDOS
+        Wait Until Element Is Visible    ${MENU_SELECCIONAR_MIS_PEDIDOS}    5s
+        Tap    ${MENU_SELECCIONAR_MIS_PEDIDOS}    duration=0.5s
+        Sleep    2s
     END
     
 Y procedemos a cerrar sesion
@@ -196,7 +210,6 @@ Y agregamos un producto a la lista de deseados
     Tap    ${LISTA_ARTICULOS_DESEADOS}    duration=0.5s
     Sleep    8s
 
-
 Y lo eliminamos de la lista de deseados
     ${MENU_TAP_CUENTA}=    _locator    MENU_TAP_CUENTA
     ${MENU_SELECCIONAR_FAVORITOS}=    _locator    MENU_SELECCIONAR_FAVORITOS
@@ -208,3 +221,55 @@ Y lo eliminamos de la lista de deseados
     Wait Until Element Is Visible    ${BOTON_ELIMINAR_ITEM_2_DE_LA_LISTA_DE_DESEADOS}    5s
     Tap    ${BOTON_ELIMINAR_ITEM_2_DE_LA_LISTA_DE_DESEADOS}    duration=0.5s
     Sleep    8s
+
+Y seleccionamos el metodo de pago Efectivo al Recibir
+    ${METODO_DE_PAGO_EFECTIVO_AL_RECIBIR}=    _locator    METODO_DE_PAGO_EFECTIVO_AL_RECIBIR
+    Wait Until Element Is Visible    ${METODO_DE_PAGO_EFECTIVO_AL_RECIBIR}    10s
+    Tap    ${METODO_DE_PAGO_EFECTIVO_AL_RECIBIR}    duration=0.5s
+
+Y continuamos sin propina si se solicita
+    ${CONTINUAR_SIN_PROPINA}=    _locator    CONTINUAR_SIN_PROPINA
+    Sleep    7s
+    ${visible}=    Run Keyword And Return Status    Element Should Be Visible    ${CONTINUAR_SIN_PROPINA}
+    IF     ${visible} 
+        Tap    ${CONTINUAR_SIN_PROPINA}    duration=0.5s
+    END
+
+Y seleccionemos un banner de promociones
+    ${SELECCIONAR_BANNER_DE_PROMOCIONES}=    _locator    SELECCIONAR_BANNER_DE_PROMOCIONES
+    Sleep    2s
+    Tap    ${SELECCIONAR_BANNER_DE_PROMOCIONES}    duration=0.5s
+    Sleep    2s
+
+Y seleccionamos una categoria para filtro
+    ${SELECCIONAR_CATEGORIA}=    _locator    SELECCIONAR_CATEGORIA
+    ${CATEGORIA_FARMACIA}=    _locator    CATEGORIA_FARMACIA
+    ${BOTON_VER_RESULTADOS_EN_CATEGORIA}=    _locator    BOTON_VER_RESULTADOS_EN_CATEGORIA
+    Sleep    2s
+    Tap    ${SELECCIONAR_CATEGORIA}    duration=0.2s
+    Sleep    2s
+    Tap    ${CATEGORIA_FARMACIA}    duration=0.2s
+    Sleep    2s
+    Tap    ${BOTON_VER_RESULTADOS_EN_CATEGORIA}    duration=0.2s
+    Sleep    5s
+
+Y seleccionamos el primer resultado
+    ${SELECCIONAR_PRIMER_ITEM_DESPUES_DE_BUSQUEDA}=    _locator    SELECCIONAR_PRIMER_ITEM_DESPUES_DE_BUSQUEDA
+    Wait Until Element Is Visible    ${SELECCIONAR_PRIMER_ITEM_DESPUES_DE_BUSQUEDA}    5s
+    Tap    ${SELECCIONAR_PRIMER_ITEM_DESPUES_DE_BUSQUEDA}    duration=0.5s
+    Sleep    5s
+
+Y seleccionamos la categoria ${categoria}
+    IF    "${categoria}" == "Bebes"
+        ${SELECCIONAR_CATEGORIA_BEBES}=    _locator    SELECCIONAR_CATEGORIA_BEBES
+        ${SELECCIONAR_SUB_CATEGORIA_DE_BEBES_FORMULA_LACTEAS}=    _locator    SELECCIONAR_SUB_CATEGORIA_DE_BEBES_FORMULA_LACTEAS
+        ${SELECCIONAR_SUB_CATEGORIA_DE_FORMULA_LACTEAS_ESPECIALIDAD}=    _locator    SELECCIONAR_SUB_CATEGORIA_DE_FORMULA_LACTEAS_ESPECIALIDAD
+        Wait Until Element Is Visible    ${SELECCIONAR_CATEGORIA_BEBES}    5s
+        Tap    ${SELECCIONAR_CATEGORIA_BEBES}    duration=0.5s
+        Sleep    2s
+        Tap    ${SELECCIONAR_SUB_CATEGORIA_DE_BEBES_FORMULA_LACTEAS}    duration=0.5s
+        Sleep    2s
+        Tap    ${SELECCIONAR_SUB_CATEGORIA_DE_FORMULA_LACTEAS_ESPECIALIDAD}    duration=0.5s
+        Sleep    5s
+    END
+

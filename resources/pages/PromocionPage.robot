@@ -15,7 +15,7 @@ _locator
     RETURN    ${loc}
 
 Y saltemos la promocion inicial
-    Sleep    20s
+    Sleep    9s
     Tap Por Porcentaje
     
 Tap Por Porcentaje
