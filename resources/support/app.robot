@@ -49,3 +49,4 @@ Cerrar app
 
 Cerrar app si abierta
     Run Keyword And Ignore Error    Close All Applications
+

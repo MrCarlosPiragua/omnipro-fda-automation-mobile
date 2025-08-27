@@ -27,7 +27,7 @@ _locator
 Cuando omitiamos el inicio de sesion
     ${BOTON_OMITIR}=    _locator    BOTON_OMITIR
     Wait Until Element Is Visible    ${BOTON_OMITIR}    5s
-    Click Element    ${BOTON_OMITIR}
+    Tap    ${BOTON_OMITIR}    duration=0.5s
 
 Cuando hagamos login en el aplicativo
     ${BOTON_INICIAR_SESION}=    _locator    BOTON_INICIAR_SESION
@@ -44,7 +44,7 @@ Cuando hagamos login en el aplicativo
 Cuando intentemos recuperar contrasena
     ${RECUPERAR_CONTRASENA}=    _locator    RECUPERAR_CONTRASENA
     Wait Until Element Is Visible    ${RECUPERAR_CONTRASENA}    5s
-    Tap    ${RECUPERAR_CONTRASENA}
+    Tap    ${RECUPERAR_CONTRASENA}    duration=0.5s
     Sleep    2s
 
 Cuando intentemos crear una nueva cuenta

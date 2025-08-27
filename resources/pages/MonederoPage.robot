@@ -32,17 +32,18 @@ _locator
 Y entramos a la seccion de monedero del ahorro
      ${SECCION_MONEDERO_DEL_AHORRO}=    _locator    SECCION_MONEDERO_DEL_AHORRO
     Wait Until Element Is Visible    ${SECCION_MONEDERO_DEL_AHORRO}    5s
-    Tap    ${SECCION_MONEDERO_DEL_AHORRO}
+    Tap    ${SECCION_MONEDERO_DEL_AHORRO}    duration=0.5s
+    Sleep    3s
 
 Y en la seccion monedero damos tap en ${obtenerMonedero}
     IF    "${obtenerMonedero}" == "Obtener Monedero"
         ${OBTENER_MONEDERO}=    _locator    OBTENER_MONEDERO
         Wait Until Element Is Visible    ${OBTENER_MONEDERO}    5s
-        Tap    ${OBTENER_MONEDERO}
+        Tap    ${OBTENER_MONEDERO}    duration=0.5s
     ELSE IF    "${obtenerMonedero}" == "En otro momento"
         ${EN_OTRO_MOMENTO}=    _locator    EN_OTRO_MOMENTO
         Wait Until Element Is Visible    ${EN_OTRO_MOMENTO}    5s
-        Tap    ${EN_OTRO_MOMENTO}
+        Tap    ${EN_OTRO_MOMENTO}    duration=0.5s
     END
 
 Y iniciamos en el monedero ${monederoId}
@@ -50,15 +51,15 @@ Y iniciamos en el monedero ${monederoId}
     ${BOTON_AGREGAR_MONEDERO_DEL_AHORRO}=    _locator    BOTON_AGREGAR_MONEDERO_DEL_AHORRO
     ${BOTON_ENTERADO}=    _locator    BOTON_ENTERADO
     Wait Until Element Is Visible    ${INPUT_NUMERO_DE_MONEDERO_DEL_AHORRO}    10s
-    Tap    ${INPUT_NUMERO_DE_MONEDERO_DEL_AHORRO}
+    Tap    ${INPUT_NUMERO_DE_MONEDERO_DEL_AHORRO}    duration=0.5s
     Sleep    1s
     Input Text    ${INPUT_NUMERO_DE_MONEDERO_DEL_AHORRO}    ${monederoId}
     Sleep    2s
-    Tap    ${INPUT_NUMERO_DE_MONEDERO_DEL_AHORRO}
+    Tap    ${INPUT_NUMERO_DE_MONEDERO_DEL_AHORRO}    duration=0.5s
     Sleep    1s
-    Tap    ${BOTON_AGREGAR_MONEDERO_DEL_AHORRO}
+    Tap    ${BOTON_AGREGAR_MONEDERO_DEL_AHORRO}    duration=0.5s
     Sleep    5s
-    Tap    ${BOTON_ENTERADO}
+    Tap    ${BOTON_ENTERADO}    duration=0.5s
     Sleep    8s
     Tap Por Porcentaje
     Sleep    5s
@@ -68,16 +69,16 @@ Y iniciamos en el monedero ${monederoId}
 Y eliminamos el monedero
     ${ELIMINAR_MONEDERO}=    _locator    ELIMINAR_MONEDERO
     ${CONFIRMAR_ELIMINACION_MONEDERO}=    _locator    CONFIRMAR_ELIMINACION_MONEDERO
-    Wait Until Element Is Visible    ${ELIMINAR_MONEDERO}    10s
-    Tap    ${ELIMINAR_MONEDERO}
-    Wait Until Element Is Visible    ${CONFIRMAR_ELIMINACION_MONEDERO}    10s
-    Tap    ${CONFIRMAR_ELIMINACION_MONEDERO}
-    Sleep    15s
+    Sleep    3s
+    Tap    ${ELIMINAR_MONEDERO}    duration=0.5s
+    Sleep    3s
+    Tap    ${CONFIRMAR_ELIMINACION_MONEDERO}    duration=0.5s
+    Sleep    10s
 
 Y vemos el estado de cuenta
     ${VER_MI_ESTADO_DE_CUENTA}=    _locator    VER_MI_ESTADO_DE_CUENTA
     ${BOTON_ATRAS}=    _locator    BOTON_ATRAS
     Wait Until Element Is Visible    ${VER_MI_ESTADO_DE_CUENTA}    10s
-    Tap    ${VER_MI_ESTADO_DE_CUENTA}
+    Tap    ${VER_MI_ESTADO_DE_CUENTA}    duration=0.5s
     Sleep    4s
-    Tap    ${BOTON_ATRAS}
+    Tap    ${BOTON_ATRAS}    duration=0.5s

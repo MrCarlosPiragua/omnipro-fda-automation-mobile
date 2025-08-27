@@ -25,11 +25,10 @@ Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboard
     ${BOTON_SIGUIENTE}=    _locator    BOTON_SIGUIENTE
     ${BOTON_COMENZAR}=    _locator    BOTON_COMENZAR
     Wait Until Element Is Visible    ${BOTON_SIGUIENTE}    5s
-    Click Element    ${BOTON_SIGUIENTE}
+    Tap    ${BOTON_SIGUIENTE}    duration=0.5s
     Wait Until Element Is Visible    ${BOTON_SIGUIENTE}    5s
-    Click Element    ${BOTON_SIGUIENTE}
+    Tap    ${BOTON_SIGUIENTE}    duration=0.5s
     Wait Until Element Is Visible    ${BOTON_SIGUIENTE}    5s
-    Click Element    ${BOTON_SIGUIENTE}
+    Tap    ${BOTON_SIGUIENTE}    duration=0.5s
     Wait Until Element Is Visible    ${BOTON_COMENZAR}    5s
-    Click Element    ${BOTON_COMENZAR}
-    
+    Tap    ${BOTON_COMENZAR}    duration=0.5s
