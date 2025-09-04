@@ -18,6 +18,16 @@ Tap Centro Del Elemento
     [Arguments]    ${locator}
     ${loc}=     Get Element Location    ${locator}
     ${size}=    Get Element Size        ${locator}
-    ${x}=       Evaluate    int(${loc["x"]} + ${size["width"]}/2)
-    ${y}=       Evaluate    int(${loc["y"]} + ${size["height"]}/2)
+    ${x}=       Evaluate    int(${loc["x"]} + ${size["width"]}*0.15)
+    ${y}=       Evaluate    int(${loc["y"]} + ${size["height"]}*0.15)
     Tap    ${x}    ${y}
+
+Scroll Hasta El Final
+    ${width}=    Get Window Width
+    ${height}=   Get Window Height
+    FOR    ${i}    IN RANGE    5
+        ${start_x}=    Evaluate    int(${width} / 2)
+        ${start_y}=    Evaluate    int(${height} * 0.8)
+        ${end_y}=      Evaluate    int(${height} * 0.2)
+        Swipe    start_x=${start_x}    start_y=${start_y}    end_x=${start_x}    end_y=${end_y}    duration=1000ms
+    END

@@ -5,55 +5,39 @@ Resource    ../../resources/pages/LoginPage.robot
 Resource    ../../resources/pages/PromocionPage.robot
 Resource    ../../resources/pages/MainPage.robot
 Resource    ../../resources/pages/MonederoPage.robot
+Resource    ../../resources/pages/SucursalesPage.robot
 Resource    ../../resources/support/api.robot
 Resource    ../../resources/support/questions.robot
 
 Test Setup  Abrir app
 Test Teardown  Cerrar app
 
+#robot -V $(pwd)/configs/android.yaml -V $(pwd)/configs/env.yaml -d reports tests/suites/CheckoutEvents.robot
+
 *** Test Cases ***
-T - FDA APP - Android - application.openning_app
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    #Y hagamos la busqueda de los datos en el CDP del evento    openning_app
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
-T - FDA APP - Android - application.skip_tap
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando omitiamos el inicio de sesion
-    #Y hagamos la busqueda de los datos en el CDP del evento    skip_tap
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
-T - FDA APP - Android - application.screen_view
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando omitiamos el inicio de sesion
-    Y saltemos la promocion inicial
-    Y revisemos los productos mas vendidos
-    #Y hagamos la busqueda de los datos en el CDP del evento    skip_tap
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
 T - FDA APP - Android - application.see_more_list
     Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
     Cuando omitiamos el inicio de sesion
     Y saltemos la promocion inicial
     Y revisemos los productos mas vendidos
-    #Y hagamos la busqueda de los datos en el CDP del evento    see_more_list
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
+    Y hagamos la busqueda de los datos en el CDP del evento    see_more_list
+    Entonces podremos ver que la estructura del evento en cuestion es correcta
 
 T - FDA APP - Android - application.show_item_list
     Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
     Cuando omitiamos el inicio de sesion
     Y saltemos la promocion inicial
     Y revisemos los productos mas vendidos
-    #Y hagamos la busqueda de los datos en el CDP del evento    show_item_list
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
+    Y hagamos la busqueda de los datos en el CDP del evento    show_item_list
+    Entonces podremos ver que la estructura del evento en cuestion es correcta
 
 T - FDA APP - Android - application.view_item_list
     Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
     Cuando omitiamos el inicio de sesion
     Y saltemos la promocion inicial
     Y revisemos los productos mas vendidos
-    #Y hagamos la busqueda de los datos en el CDP del evento    show_item_list
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
+    Y hagamos la busqueda de los datos en el CDP del evento    view_item_list
+    Entonces podremos ver que la estructura del evento en cuestion es correcta
 
 T - FDA APP - Android - application.select_item
     Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
@@ -61,8 +45,8 @@ T - FDA APP - Android - application.select_item
     Y saltemos la promocion inicial
     Y busquemos el producto Firialta 20 mg Oral 28 Tabs
     Y seleccionamos el primer producto
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
+    Y hagamos la busqueda de los datos en el CDP del evento    select_item
+    Entonces podremos ver que la estructura del evento en cuestion es correcta
 
 T - FDA APP - Android - application.view_item
     Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
@@ -70,8 +54,8 @@ T - FDA APP - Android - application.view_item
     Y saltemos la promocion inicial
     Y busquemos el producto Firialta 20 mg Oral 28 Tabs
     Y seleccionamos el primer producto
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
+    Y hagamos la busqueda de los datos en el CDP del evento    view_item
+    Entonces podremos ver que la estructura del evento en cuestion es correcta
 
 T - FDA APP - Android - application.share
     Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
@@ -144,7 +128,6 @@ T - FDA APP - Android - application.delete_shopping_cart
     Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
     Cuando hagamos login en el aplicativo
     Y saltemos la promocion inicial
-    Y valido que no hayan productos en el carrito
     Y busquemos el producto Firialta 20 mg Oral 28 Tabs
     Y seleccionamos el primer producto
     Y se agregua el producto al carrito
@@ -199,7 +182,7 @@ T - FDA APP - Android - application.invalid_cart
     Y seleccionamos el primer producto
     Y se agregua el producto al carrito
     Y reviso el carrito de compras
-    Y agrego 4 unidades mas del producto
+    Y agrego todas las unidades posibles del primer producto
     #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
     #Entonces podremos ver que la estructura del evento en cuestion es correcta
 
@@ -303,150 +286,11 @@ T - FDA APP - Android - application.select_promotion
     #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
     #Entonces podremos ver que la estructura del evento en cuestion es correcta
 
-T - FDA APP - Android - application.view_general_search_results
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando omitiamos el inicio de sesion
-    Y saltemos la promocion inicial
-    Y busquemos el producto Firialta
-    Y buscamos para tener la lista de resultados
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
-T - FDA APP - Android - application.view_branch_search_results
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando omitiamos el inicio de sesion
-    Y saltemos la promocion inicial
-    Y busquemos el producto Firialta
-    Y buscamos para tener la lista de resultados
-    Y seleccionamos una categoria para filtro
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
-T - FDA APP - Android - application.productSearchSelected
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando omitiamos el inicio de sesion
-    Y saltemos la promocion inicial
-    Y busquemos el producto Firialta
-    Y buscamos para tener la lista de resultados
-    Y seleccionamos el primer resultado
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
-T - FDA APP - Android - application.ux_category_menu
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando omitiamos el inicio de sesion
-    Y saltemos la promocion inicial
-    Y seleccionamos la categoria Bebes
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
-T - FDA APP - Android - application.menuTap
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando omitiamos el inicio de sesion
-    Y saltemos la promocion inicial
-    Y naveguemos al menu de Promociones
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
-T - FDA APP - Android - application.ux_mi_cuenta
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando hagamos login en el aplicativo
-    Y saltemos la promocion inicial
-    Y naveguemos al menu de Cuenta
-    Y vamos a la seccion de Mis Pedidos
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
-T - FDA APP - Android - application.directionTap
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando hagamos login en el aplicativo
-    Y saltemos la promocion inicial
-    Y intentemos seleccionar una direccion de envio
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
 T - FDA APP - Android - application.selectDirection
     Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
     Cuando hagamos login en el aplicativo
     Y saltemos la promocion inicial
     Y intentemos seleccionar una direccion de envio
     Y seleccionamos la direccion Otro
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
-T - FDA APP - Android - application.logOut
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando hagamos login en el aplicativo
-    Y saltemos la promocion inicial
-    Y naveguemos al menu de Cuenta
-    Y vamos a la seccion de Cerrar Sesion
-    Y procedemos a cerrar sesion
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
-T - FDA APP - Android - application.forgotPasswd
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando intentemos recuperar contrasena
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
-T - FDA APP - Android - application.loginTap
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando hagamos login en el aplicativo
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
-T - FDA APP - Android - application.signUpTap
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando intentemos crear una nueva cuenta
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
-T - FDA APP - Android - application.getMonedero
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando hagamos login en el aplicativo
-    Y saltemos la promocion inicial
-    Y entramos a la seccion de monedero del ahorro
-    Y en la seccion monedero damos tap en Obtener Monedero
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
-T - FDA APP - Android - application.getMonederoLater
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando hagamos login en el aplicativo
-    Y saltemos la promocion inicial
-    Y entramos a la seccion de monedero del ahorro
-    Y en la seccion monedero damos tap en En otro momento
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
-T - FDA APP - Android - application.ux_eliminar_monedero
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando hagamos login en el aplicativo
-    Y saltemos la promocion inicial
-    Y entramos a la seccion de monedero del ahorro
-    Y iniciamos en el monedero 9600471216859
-    Y entramos a la seccion de monedero del ahorro
-    Y eliminamos el monedero
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
-T - FDA APP - Android - application.ux_estado_cuenta_tap
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando hagamos login en el aplicativo
-    Y saltemos la promocion inicial
-    Y entramos a la seccion de monedero del ahorro
-    Y iniciamos en el monedero 9600471216859
-    Y entramos a la seccion de monedero del ahorro
-    Y vemos el estado de cuenta
-    Y eliminamos el monedero
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
-
-T - FDA APP - Android - application.option_tap
-    Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
-    Cuando hagamos login en el aplicativo
-    Y saltemos la promocion inicial
-    Y entramos a la seccion de monedero del ahorro
     #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
     #Entonces podremos ver que la estructura del evento en cuestion es correcta

@@ -1,25 +1,21 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "entity - openning_app",
+  "title": "view_branch_search_results",
   "type": "object",
-  "required": ["_fahorro"],
+  "required": ["_fahorro", "search"],
   "additionalProperties": true,
   "properties": {
     "_fahorro": {
       "type": "object",
-      "required": [
-        "appInteractionEvents",
-        "appInformation",
-        "appInteractionAttributes"
-      ],
+      "required": ["appInteractionEvents", "appInformation"],
       "additionalProperties": true,
       "properties": {
         "appInteractionEvents": {
           "type": "object",
-          "required": ["openningApp"],
+          "required": ["viewBranchSearchResults"],
           "additionalProperties": true,
           "properties": {
-            "openningApp": {
+            "viewBranchSearchResults": {
               "type": "object",
               "required": ["value"],
               "additionalProperties": true,
@@ -43,19 +39,21 @@
               }
             }
           }
-        },
-        "appInteractionAttributes": {
+        }
+      }
+    },
+    "search": {
+      "type": "object",
+      "required": ["keywords", "_fahorro"],
+      "additionalProperties": true,
+      "properties": {
+        "keywords": { "type": "string" },
+        "_fahorro": {
           "type": "object",
-          "required": [
-            "deepLinkSource",
-            "deepLinkMedium",
-            "deepLinkCampaign"
-          ],
+          "required": ["quantityResults"],
           "additionalProperties": true,
           "properties": {
-            "deepLinkSource": { "type": "string" },
-            "deepLinkMedium": { "type": "string" },
-            "deepLinkCampaign": { "type": "string" }
+            "quantityResults": { "type": "integer" }
           }
         }
       }

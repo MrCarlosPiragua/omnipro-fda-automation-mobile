@@ -1,25 +1,21 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "entity - openning_app",
+  "title": "error_custom_dart",
   "type": "object",
   "required": ["_fahorro"],
   "additionalProperties": true,
   "properties": {
     "_fahorro": {
       "type": "object",
-      "required": [
-        "appInteractionEvents",
-        "appInformation",
-        "appInteractionAttributes"
-      ],
+      "required": ["appInteractionEvents", "appInformation", "appInteractionAttributes"],
       "additionalProperties": true,
       "properties": {
         "appInteractionEvents": {
           "type": "object",
-          "required": ["openningApp"],
+          "required": ["errorCustomDart"],
           "additionalProperties": true,
           "properties": {
-            "openningApp": {
+            "errorCustomDart": {
               "type": "object",
               "required": ["value"],
               "additionalProperties": true,
@@ -46,16 +42,11 @@
         },
         "appInteractionAttributes": {
           "type": "object",
-          "required": [
-            "deepLinkSource",
-            "deepLinkMedium",
-            "deepLinkCampaign"
-          ],
+          "required": ["errorCode", "errorMessage"],
           "additionalProperties": true,
           "properties": {
-            "deepLinkSource": { "type": "string" },
-            "deepLinkMedium": { "type": "string" },
-            "deepLinkCampaign": { "type": "string" }
+            "errorCode": { "type": "string" },
+            "errorMessage": { "type": "string" }
           }
         }
       }

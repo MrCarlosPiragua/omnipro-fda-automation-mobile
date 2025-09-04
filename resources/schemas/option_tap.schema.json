@@ -1,30 +1,15 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "entity - skip_tap",
+  "title": "option_tap - screenName requerido",
   "type": "object",
   "required": ["_fahorro"],
   "additionalProperties": true,
   "properties": {
     "_fahorro": {
       "type": "object",
-      "required": ["appInteractionEvents", "appInformation"],
+      "required": ["appInformation"],
       "additionalProperties": true,
       "properties": {
-        "appInteractionEvents": {
-          "type": "object",
-          "required": ["skipTap"],
-          "additionalProperties": true,
-          "properties": {
-            "skipTap": {
-              "type": "object",
-              "required": ["value"],
-              "additionalProperties": true,
-              "properties": {
-                "value": { "type": "number" }
-              }
-            }
-          }
-        },
         "appInformation": {
           "type": "object",
           "required": ["appStateDetails"],

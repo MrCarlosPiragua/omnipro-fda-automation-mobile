@@ -44,7 +44,7 @@ Y hagamos la busqueda de los datos en el CDP del evento
     ...    orderby=-timestamp
     ...    property=eventType="application.${evento}"
 
-    Sleep    10 minutes
+    Sleep    15 minutes
 
     Create Session    ApiEventsCDP    https://platform.adobe.io    disable_warnings=1
     ${responseEventCDP}=    Get On Session    ApiEventsCDP    /data/core/ups/access/entities    params=${params}    headers=${headers}

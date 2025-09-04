@@ -61,7 +61,7 @@ Y iniciamos en el monedero ${monederoId}
     Sleep    5s
     Tap    ${BOTON_ENTERADO}    duration=0.5s
     Sleep    8s
-    Tap Por Porcentaje
+    Y saltemos la promocion inicial
     Sleep    5s
     Tap Por Porcentaje
 

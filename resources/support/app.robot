@@ -5,6 +5,7 @@ Library    BuiltIn
 
 *** Keywords ***
 Abrir app
+    Sleep    10s
     ${platform}=    Get Variable Value    ${PLATFORM}    Android
     Run Keyword If    "${platform}"!="Android" and "${platform}"!="iOS"    Fail    msg=PLATFORM debe ser Android o iOS
 

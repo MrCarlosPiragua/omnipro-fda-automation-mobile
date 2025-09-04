@@ -1,25 +1,21 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "entity - openning_app",
+  "title": "entity - screen_view",
   "type": "object",
   "required": ["_fahorro"],
   "additionalProperties": true,
   "properties": {
     "_fahorro": {
       "type": "object",
-      "required": [
-        "appInteractionEvents",
-        "appInformation",
-        "appInteractionAttributes"
-      ],
+      "required": ["appInteractionEvents", "appInformation"],
       "additionalProperties": true,
       "properties": {
         "appInteractionEvents": {
           "type": "object",
-          "required": ["openningApp"],
+          "required": ["screenView"],
           "additionalProperties": true,
           "properties": {
-            "openningApp": {
+            "screenView": {
               "type": "object",
               "required": ["value"],
               "additionalProperties": true,
@@ -36,26 +32,22 @@
           "properties": {
             "appStateDetails": {
               "type": "object",
-              "required": ["screenName"],
+              "required": [
+                "screenName",
+                "screenReferring",
+                "screenType",
+                "statusLogin",
+                "screenCategory"
+              ],
               "additionalProperties": true,
               "properties": {
-                "screenName": { "type": "string" }
+                "screenName": { "type": "string" },
+                "screenReferring": { "type": "string" },
+                "screenType": { "type": "string" },
+                "statusLogin": { "type": "boolean" },
+                "screenCategory": { "type": "string" }
               }
             }
-          }
-        },
-        "appInteractionAttributes": {
-          "type": "object",
-          "required": [
-            "deepLinkSource",
-            "deepLinkMedium",
-            "deepLinkCampaign"
-          ],
-          "additionalProperties": true,
-          "properties": {
-            "deepLinkSource": { "type": "string" },
-            "deepLinkMedium": { "type": "string" },
-            "deepLinkCampaign": { "type": "string" }
           }
         }
       }

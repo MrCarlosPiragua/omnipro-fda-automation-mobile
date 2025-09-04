@@ -24,11 +24,15 @@ _locator
 Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
     ${BOTON_SIGUIENTE}=    _locator    BOTON_SIGUIENTE
     ${BOTON_COMENZAR}=    _locator    BOTON_COMENZAR
+    Wait Until Element Is Visible    ${BOTON_SIGUIENTE}    40s
+    Sleep    2s
+    Tap    ${BOTON_SIGUIENTE}    duration=0.4s
     Wait Until Element Is Visible    ${BOTON_SIGUIENTE}    5s
-    Tap    ${BOTON_SIGUIENTE}    duration=0.5s
+    Sleep    2s
+    Tap    ${BOTON_SIGUIENTE}    duration=0.4s
     Wait Until Element Is Visible    ${BOTON_SIGUIENTE}    5s
-    Tap    ${BOTON_SIGUIENTE}    duration=0.5s
-    Wait Until Element Is Visible    ${BOTON_SIGUIENTE}    5s
-    Tap    ${BOTON_SIGUIENTE}    duration=0.5s
+    Sleep    2s
+    Tap    ${BOTON_SIGUIENTE}    duration=0.4s
     Wait Until Element Is Visible    ${BOTON_COMENZAR}    5s
-    Tap    ${BOTON_COMENZAR}    duration=0.5s
+    Sleep    2s
+    Tap    ${BOTON_COMENZAR}    duration=0.4s
