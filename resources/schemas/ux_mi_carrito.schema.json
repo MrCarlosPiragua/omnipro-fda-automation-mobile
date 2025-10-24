@@ -1,51 +1,65 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "ux_mi_carrito",
+  "title": "application.ux_mi_carrito (mínimo)",
   "type": "object",
-  "required": ["_fahorro"],
   "additionalProperties": true,
+  "required": ["eventType", "_id", "timestamp", "_fahorro", "commerce"],
   "properties": {
+    "eventType": { "type": "string", "const": "application.ux_mi_carrito" },
+    "_id": { "type": "string" },
+    "timestamp": { "type": "string" },
+
     "_fahorro": {
       "type": "object",
-      "required": ["appInteractionEvents", "appInformation", "appInteractionAttributes"],
       "additionalProperties": true,
+      "required": ["appInteractionEvents", "appInformation"],
       "properties": {
         "appInteractionEvents": {
           "type": "object",
-          "required": ["miCarrito"],
           "additionalProperties": true,
+          "required": ["miCarrito"],
           "properties": {
             "miCarrito": {
               "type": "object",
               "required": ["value"],
-              "additionalProperties": true,
-              "properties": {
-                "value": { "type": "number" }
-              }
+              "properties": { "value": { "type": "number" } }
             }
           }
         },
         "appInformation": {
           "type": "object",
-          "required": ["appStateDetails"],
           "additionalProperties": true,
+          "required": ["appStateDetails"],
           "properties": {
             "appStateDetails": {
               "type": "object",
-              "required": ["screenName"],
               "additionalProperties": true,
-              "properties": {
-                "screenName": { "type": "string" }
-              }
+              "required": ["screenName"],
+              "properties": { "screenName": { "type": "string" } }
             }
           }
-        },
-        "appInteractionAttributes": {
+        }
+      }
+    },
+
+    "commerce": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["cart", "order"],
+      "properties": {
+        "cart": {
           "type": "object",
-          "required": ["environment"],
           "additionalProperties": true,
+          "required": ["cartID"],
+          "properties": { "cartID": { "type": "string" } }
+        },
+        "order": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["currencyCode", "priceTotal"],
           "properties": {
-            "environment": { "type": "string" }
+            "currencyCode": { "type": "string" },
+            "priceTotal": { "type": "number" }
           }
         }
       }
@@ -53,7 +67,6 @@
 
     "productListItems": {
       "type": "array",
-      "minItems": 0,
       "items": {
         "type": "object",
         "additionalProperties": true,
@@ -62,12 +75,9 @@
           "product": { "type": "string" },
           "name": { "type": "string" },
           "SKU": { "type": "string" },
-          "priceTotal": { "type": "number" },
-          "_fahorro": { "type": "object", "additionalProperties": true }
+          "priceTotal": { "type": "number" }
         }
       }
-    },
-
-    "commerce": { "type": "object", "additionalProperties": true }
+    }
   }
 }

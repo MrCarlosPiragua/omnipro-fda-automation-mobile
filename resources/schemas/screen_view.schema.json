@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "entity - screen_view",
+  "title": "screen_view",
   "type": "object",
   "required": ["_fahorro"],
   "additionalProperties": true,
@@ -20,7 +20,7 @@
               "required": ["value"],
               "additionalProperties": true,
               "properties": {
-                "value": { "type": "number" }
+                "value": { "type": "integer" }
               }
             }
           }
@@ -32,13 +32,7 @@
           "properties": {
             "appStateDetails": {
               "type": "object",
-              "required": [
-                "screenName",
-                "screenReferring",
-                "screenType",
-                "statusLogin",
-                "screenCategory"
-              ],
+              "required": ["screenName", "screenReferring", "screenType", "statusLogin", "screenCategory"],
               "additionalProperties": true,
               "properties": {
                 "screenName": { "type": "string" },

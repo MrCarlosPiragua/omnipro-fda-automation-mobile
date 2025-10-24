@@ -5,7 +5,8 @@ Resource    PromocionPage.robot
 
 *** Variables ***
 &{MONEDERO_ANDROID_LOCATORS}
-...    SECCION_MONEDERO_DEL_AHORRO=accessibility_id=0
+...    SECCION_MONEDERO_DEL_AHORRO_ANTES=accessibility_id=0
+...    SECCION_MONEDERO_DEL_AHORRO=accessibility_id=1.13
 ...    OBTENER_MONEDERO=accessibility_id=Obtener Monedero
 ...    EN_OTRO_MOMENTO=accessibility_id=En otro momento
 ...    ELIMINAR_MONEDERO=accessibility_id=Eliminar Monedero del Ahorro
@@ -28,6 +29,12 @@ _locator
         ${loc}=    Get From Dictionary    ${MONEDERO_IOS_LOCATORS}    ${name}
     END
     RETURN    ${loc}
+
+Y entramos a la seccion de monedero del ahorro antes
+     ${SECCION_MONEDERO_DEL_AHORRO_ANTES}=    _locator    SECCION_MONEDERO_DEL_AHORRO_ANTES
+    Wait Until Element Is Visible    ${SECCION_MONEDERO_DEL_AHORRO_ANTES}    5s
+    Tap    ${SECCION_MONEDERO_DEL_AHORRO_ANTES}    duration=0.5s
+    Sleep    3s
 
 Y entramos a la seccion de monedero del ahorro
      ${SECCION_MONEDERO_DEL_AHORRO}=    _locator    SECCION_MONEDERO_DEL_AHORRO

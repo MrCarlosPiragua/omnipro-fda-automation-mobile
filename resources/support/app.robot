@@ -13,7 +13,7 @@ Abrir app
     ${no_reset}=  Get Variable Value    ${NO_RESET}    ${False}
     ${timeout}=   Get Variable Value    ${NEW_COMMAND_TIMEOUT}    10000
     ${autoGrantPermissions}=   Get Variable Value    ${AUTO_GRANT_PERMISSIONS}    true
-    ${time}=    Get Current Date    result_format=epoch
+    ${time}=    Get Current Date    result_format=epoch    increment=-1 minute
     ${millis}=    Evaluate    int(${time}*1000)
     Set Test Variable    ${TIMESTAMP_TO_SEARCH}       ${millis}
     Log    timestamp ${time}

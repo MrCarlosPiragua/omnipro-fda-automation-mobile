@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "application.select_direction (mínimo)",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["eventType", "_id", "timestamp", "_fahorro"],
+  "properties": {
+    "eventType": { "type": "string", "const": "application.select_direction" },
+    "_id": { "type": "string" },
+    "timestamp": { "type": "string" },
+
+    "_fahorro": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["appInformation", "appInteractionEvents"],
+      "properties": {
+        "appInformation": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["appStateDetails"],
+          "properties": {
+            "appStateDetails": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": ["screenName"],
+              "properties": {
+                "screenName": { "type": "string" }
+              }
+            }
+          }
+        },
+        "appInteractionEvents": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["selectDirection"],
+          "properties": {
+            "selectDirection": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": ["value"],
+              "properties": {
+                "value": { "type": "integer" }
+              }
+            }
+          }
+        },
+        "appInteractionAttributes": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "environment": { "type": "string" }
+          }
+        }
+      }
+    },
+
+    "commerce": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "shipping": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "address": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "stateProvince": { "type": "string" },
+                "state": { "type": "string" },
+                "city": { "type": "string" },
+                "postalCode": { "type": "string" },
+                "_fahorro": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "delegation": { "type": "string" },
+                    "directionType": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

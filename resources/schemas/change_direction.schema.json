@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "application.change_direction (mínimo)",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["eventType", "_id", "timestamp", "_fahorro"],
+  "properties": {
+    "eventType": { "type": "string", "const": "application.change_direction" },
+    "_id": { "type": "string" },
+    "timestamp": { "type": "string" },
+
+    "_fahorro": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["appInformation"],
+      "properties": {
+        "appInformation": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["appStateDetails"],
+          "properties": {
+            "appStateDetails": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": ["screenName"],
+              "properties": {
+                "screenName": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

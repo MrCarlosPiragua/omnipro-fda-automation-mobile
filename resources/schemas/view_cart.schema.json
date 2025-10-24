@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "application.view_cart (mínimo)",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["eventType", "_id", "timestamp", "_fahorro", "commerce", "productListItems"],
+  "properties": {
+    "eventType": { "type": "string", "const": "application.view_cart" },
+    "_id": { "type": "string" },
+    "timestamp": { "type": "string" },
+
+    "_fahorro": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["appInformation"],
+      "properties": {
+        "appInformation": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["appStateDetails"],
+          "properties": {
+            "appStateDetails": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": ["screenName"],
+              "properties": { "screenName": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+
+    "commerce": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["productListViews", "cart", "order"],
+      "properties": {
+        "productListViews": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["value"],
+          "properties": { "value": { "type": "number" } }
+        },
+        "cart": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["cartID"],
+          "properties": { "cartID": { "type": "string" } }
+        },
+        "order": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["currencyCode", "priceTotal"],
+          "properties": {
+            "currencyCode": { "type": "string" },
+            "priceTotal": { "type": "number" }
+          }
+        }
+      }
+    },
+
+    "productListItems": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["product", "name", "SKU", "priceTotal"],
+        "properties": {
+          "product": { "type": "string" },
+          "name": { "type": "string" },
+          "SKU": { "type": "string" },
+          "priceTotal": { "type": "number" }
+        }
+      }
+    }
+  }
+}

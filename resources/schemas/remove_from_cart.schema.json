@@ -1,36 +1,27 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "entity - view_item (productDetail)",
+  "title": "entity - remove_from_cart",
   "type": "object",
-  "required": ["_fahorro", "commerce", "productListItems"],
   "additionalProperties": true,
+  "required": ["eventType", "commerce", "productListItems"],
   "properties": {
+    "eventType": { "type": "string", "const": "application.remove_from_cart" },
+
     "_fahorro": {
       "type": "object",
-      "required": ["appInteractionAttributes", "appInteractionEvents", "appInformation"],
       "additionalProperties": true,
       "properties": {
-        "appInteractionAttributes": {
-          "type": "object",
-          "required": ["environment"],
-          "additionalProperties": true,
-          "properties": {
-            "environment": { "type": "string" }
-          }
-        },
-        "appInteractionEvents": {
-          "type": "object",
-          "additionalProperties": true
-        },
+        "appInteractionAttributes": { "type": "object", "additionalProperties": true },
+        "appInteractionEvents": { "type": "object", "additionalProperties": true },
         "appInformation": {
           "type": "object",
-          "required": ["appStateDetails"],
           "additionalProperties": true,
+          "required": ["appStateDetails"],
           "properties": {
             "appStateDetails": {
               "type": "object",
-              "required": ["screenName"],
               "additionalProperties": true,
+              "required": ["screenName"],
               "properties": {
                 "screenName": { "type": "string" }
               }
@@ -39,71 +30,71 @@
         }
       }
     },
+
     "commerce": {
       "type": "object",
-      "required": ["productViews", "order"],
       "additionalProperties": true,
+      "required": ["productListRemovals", "order"],
       "properties": {
-        "productViews": {
+        "productListRemovals": {
           "type": "object",
-          "required": ["value"],
           "additionalProperties": true,
-          "properties": {
-            "value": { "type": "number" }
-          }
+          "required": ["value"],
+          "properties": { "value": { "type": "number" } }
+        },
+        "cart": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": { "cartID": { "type": "string" } }
         },
         "order": {
           "type": "object",
-          "required": ["currencyCode"],
           "additionalProperties": true,
           "properties": {
-            "currencyCode": { "type": "string" }
+            "currencyCode": { "type": "string" },
+            "priceTotal": { "type": "number" },
+            "_fahorro": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "orderPromos": { "type": "array", "items": { "type": "object" } }
+              }
+            }
           }
         }
       }
     },
+
     "productListItems": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": [
-          "_fahorro",
-          "name",
-          "SKU",
-          "product",
-          "priceTotal",
-          "discountAmount",
-          "productCategories"
-        ],
         "additionalProperties": true,
+        "required": ["_fahorro", "product", "quantity", "priceTotal", "name", "discountAmount", "SKU"],
         "properties": {
           "_fahorro": {
             "type": "object",
-            "required": [
-              "position",
-              "productPrice",
-              "originalPrice",
-              "taxAmount",
-              "requiresRecipe",
-              "ownBrand",
-              "productBrand"
-            ],
             "additionalProperties": true,
+            "required": ["productBrand", "position", "productPrice", "originalPrice", "taxAmount", "ownBrand", "requiresRecipe"],
             "properties": {
+              "productBrand": { "type": "string" },
               "position": { "type": "string" },
               "productPrice": { "type": "number" },
               "originalPrice": { "type": "number" },
               "taxAmount": { "type": "number" },
-              "requiresRecipe": { "type": "boolean" },
               "ownBrand": { "type": "boolean" },
-              "productBrand": { "type": "string" },
+              "requiresRecipe": { "type": "boolean" },
               "productAvailable": { "type": "boolean" },
+              "productFeatures": { "type": "string" },
+              "productIngredients": { "type": "string" },
+              "subscription": { "type": "boolean" },
               "productPromotions": {
                 "type": "array",
                 "items": {
                   "type": "object",
                   "additionalProperties": true,
+                  "required": ["discount", "promoType", "appliedPromotion"],
                   "properties": {
                     "discount": { "type": "number" },
                     "promoType": { "type": "string" },
@@ -111,18 +102,16 @@
                     "promotionId": { "type": "string" }
                   }
                 }
-              },
-              "productIngredients": { "type": "string" },
-              "subscription": { "type": "boolean" }
+              }
             }
           },
+
           "productCategories": {
             "type": "array",
-            "minItems": 1,
             "items": {
               "type": "object",
-              "required": ["categoryName", "categoryPath", "categoryID"],
               "additionalProperties": true,
+              "required": ["categoryName", "categoryPath", "categoryID"],
               "properties": {
                 "categoryName": { "type": "string" },
                 "categoryPath": { "type": "string" },
@@ -130,6 +119,7 @@
               }
             }
           },
+
           "product": { "type": "string" },
           "quantity": { "type": "number" },
           "priceTotal": { "type": "number" },

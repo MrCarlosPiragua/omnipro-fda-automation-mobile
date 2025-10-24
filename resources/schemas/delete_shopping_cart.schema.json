@@ -1,31 +1,21 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "entity - see_more_list (homeWeeklySuggestions)",
+  "title": "entity - delete_shopping_cart",
   "type": "object",
   "required": ["_fahorro"],
   "additionalProperties": true,
   "properties": {
     "_fahorro": {
       "type": "object",
-      "required": ["appInteractionEvents", "appInformation", "appInteractionAttributes"],
+      "required": ["appInteractionEvents", "appInformation"],
       "additionalProperties": true,
       "properties": {
-        "appInteractionAttributes": {
-          "type": "object",
-          "required": ["listId", "listName", "environment"],
-          "additionalProperties": true,
-          "properties": {
-            "listId": { "type": "string" },
-            "listName": { "type": "string" },
-            "environment": { "type": "string" }
-          }
-        },
         "appInteractionEvents": {
           "type": "object",
-          "required": ["seeMoreList"],
+          "required": ["deleteShoppingCart"],
           "additionalProperties": true,
           "properties": {
-            "seeMoreList": {
+            "deleteShoppingCart": {
               "type": "object",
               "required": ["value"],
               "additionalProperties": true,
@@ -49,6 +39,13 @@
               }
             }
           }
+        },
+        "appInteractionAttributes": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "environment": { "type": "string" }
+          }
         }
       }
     },
@@ -56,12 +53,29 @@
       "type": "object",
       "additionalProperties": true,
       "properties": {
-        "order": {
+        "cart": {
           "type": "object",
-          "required": ["currencyCode"],
+          "required": ["cartID"],
           "additionalProperties": true,
           "properties": {
-            "currencyCode": { "type": "string" }
+            "cartID": { "type": "string" }
+          }
+        },
+        "order": {
+          "type": "object",
+          "required": ["currencyCode", "priceTotal"],
+          "additionalProperties": true,
+          "properties": {
+            "currencyCode": { "type": "string" },
+            "priceTotal": { "type": "number" },
+            "_fahorro": {
+              "type": "object",
+              "required": ["totalProducts"],
+              "additionalProperties": true,
+              "properties": {
+                "totalProducts": { "type": "number" }
+              }
+            }
           }
         }
       }
@@ -70,42 +84,26 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["product", "name", "SKU", "priceTotal", "discountAmount", "_fahorro"],
         "additionalProperties": true,
+        "required": ["name", "SKU", "priceTotal", "quantity", "discountAmount", "_fahorro"],
         "properties": {
-          "product": { "type": "string" },
           "name": { "type": "string" },
           "SKU": { "type": "string" },
           "priceTotal": { "type": "number" },
+          "quantity": { "type": "integer" },
           "discountAmount": { "type": "number" },
-          "productCategories": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "additionalProperties": true,
-              "properties": {
-                "categoryName": { "type": "string" }
-              }
-            }
-          },
           "_fahorro": {
             "type": "object",
-            "required": ["listId", "listName", "position", "productPrice", "originalPrice", "taxAmount", "requiresRecipe"],
             "additionalProperties": true,
+            "required": ["productBrand", "position", "productPrice", "originalPrice", "taxAmount", "ownBrand", "requiresRecipe"],
             "properties": {
-              "listId": { "type": "string" },
-              "listName": { "type": "string" },
+              "productBrand": { "type": "string" },
               "position": { "type": "string" },
               "productPrice": { "type": "number" },
               "originalPrice": { "type": "number" },
               "taxAmount": { "type": "number" },
-              "requiresRecipe": { "type": "boolean" },
-              "productBrand": { "type": "string" },
-              "productAvailable": { "type": "boolean" },
               "ownBrand": { "type": "boolean" },
-              "subscription": { "type": "boolean" },
-              "productFeatures": { "type": "string" },
-              "productIngredients": { "type": "string" },
+              "requiresRecipe": { "type": "boolean" },
               "productPromotions": {
                 "type": "array",
                 "items": {
@@ -116,9 +114,19 @@
                     "appliedPromotion": { "type": "string" },
                     "discount": { "type": "number" },
                     "promoType": { "type": "string" },
-                    "promotionId": { "oneOf": [{ "type": "string" }, { "type": "number" }] }
+                    "promotionId": { "oneOf": [{ "type": "number" }, { "type": "string" }] }
                   }
                 }
+              }
+            }
+          },
+          "productCategories": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "categoryName": { "type": "string" }
               }
             }
           }

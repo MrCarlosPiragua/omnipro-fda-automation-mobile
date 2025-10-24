@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "openning_app",
+  "title": "entity - ux_estado_cuenta_view",
   "type": "object",
-  "required": ["_fahorro"],
+  "required": ["_fahorro", "commerce"],
   "additionalProperties": true,
   "properties": {
     "_fahorro": {
@@ -12,10 +12,10 @@
       "properties": {
         "appInteractionEvents": {
           "type": "object",
-          "required": ["openningApp"],
+          "required": ["estadoCuentaTap"],
           "additionalProperties": true,
           "properties": {
-            "openningApp": {
+            "estadoCuentaTap": {
               "type": "object",
               "required": ["value"],
               "additionalProperties": true,
@@ -42,12 +42,32 @@
         },
         "appInteractionAttributes": {
           "type": "object",
-          "required": ["deepLinkSource", "deepLinkMedium", "deepLinkCampaign"],
+          "required": ["monederoId"],
           "additionalProperties": true,
           "properties": {
-            "deepLinkSource": { "type": "string" },
-            "deepLinkMedium": { "type": "string" },
-            "deepLinkCampaign": { "type": "string" }
+            "monederoId": { "type": "string" }
+          }
+        }
+      }
+    },
+    "commerce": {
+      "type": "object",
+      "required": ["order"],
+      "additionalProperties": true,
+      "properties": {
+        "order": {
+          "type": "object",
+          "required": ["_fahorro"],
+          "additionalProperties": true,
+          "properties": {
+            "_fahorro": {
+              "type": "object",
+              "required": ["saldoMonedero"],
+              "additionalProperties": true,
+              "properties": {
+                "saldoMonedero": { "type": "number" }
+              }
+            }
           }
         }
       }

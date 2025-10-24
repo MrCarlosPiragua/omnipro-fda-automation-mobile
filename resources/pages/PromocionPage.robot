@@ -22,16 +22,15 @@ _locator
     RETURN    ${loc}
 
 Y saltemos la promocion inicial
-    ${PROMOCION_1}=    _locator    PROMOCION_1
-    #${MENU_BAR_INICIO}=    _locator    MENU_BAR_INICIO
+    #${PROMOCION_1}=    _locator    PROMOCION_1
     Sleep    9s
-    ${visible}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${PROMOCION_1}    15s
-    Run Keyword If    ${visible}    Tap    ${PROMOCION_1}    duration=0.5s
-    Sleep    9s
-    #Tap Por Porcentaje
+    #${visible}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${PROMOCION_1}    15s
+    #Run Keyword If    ${visible}    Tap    ${PROMOCION_1}    duration=0.5s
+    #Sleep    9s
+    Tap Por Porcentaje
     #Sleep    4s
     #Tap    ${MENU_BAR_INICIO}    duration=0.5s
-    #Sleep    9s
+    Sleep    9s
 
 
 Tap Por Porcentaje

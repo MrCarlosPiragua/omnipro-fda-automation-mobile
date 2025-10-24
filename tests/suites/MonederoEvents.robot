@@ -20,62 +20,62 @@ T - FDA APP - Android - application.ux_asociar_monedero
     Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
     Cuando hagamos login en el aplicativo
     Y saltemos la promocion inicial
-    Y entramos a la seccion de monedero del ahorro
+    Y entramos a la seccion de monedero del ahorro antes
     Y iniciamos en el monedero 9600471216859
     Y entramos a la seccion de monedero del ahorro
     Y eliminamos el monedero
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
+    Y hagamos la busqueda de los datos en el CDP del evento    ux_asociar_monedero
+    Entonces podremos ver que la estructura del evento en cuestion es correcta
 
 T - FDA APP - Android - application.ux_eliminar_monedero
     Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
     Cuando hagamos login en el aplicativo
     Y saltemos la promocion inicial
-    Y entramos a la seccion de monedero del ahorro
+    Y entramos a la seccion de monedero del ahorro antes
     Y iniciamos en el monedero 9600471216859
     Y entramos a la seccion de monedero del ahorro
     Y eliminamos el monedero
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
+    Y hagamos la busqueda de los datos en el CDP del evento    ux_eliminar_monedero
+    Entonces podremos ver que la estructura del evento en cuestion es correcta
 
 T - FDA APP - Android - application.ux_estado_cuenta_tap
     Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
     Cuando hagamos login en el aplicativo
     Y saltemos la promocion inicial
-    Y entramos a la seccion de monedero del ahorro
+    Y entramos a la seccion de monedero del ahorro antes
     Y iniciamos en el monedero 9600471216859
     Y entramos a la seccion de monedero del ahorro
     Y vemos el estado de cuenta
     Y eliminamos el monedero
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
+    Y hagamos la busqueda de los datos en el CDP del evento    ux_estado_cuenta_tap
+    Entonces podremos ver que la estructura del evento en cuestion es correcta
 
 T - FDA APP - Android - application.ux_estado_cuenta_view
     Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
     Cuando hagamos login en el aplicativo
     Y saltemos la promocion inicial
-    Y entramos a la seccion de monedero del ahorro
+    Y entramos a la seccion de monedero del ahorro antes
     Y iniciamos en el monedero 9600471216859
     Y entramos a la seccion de monedero del ahorro
     Y vemos el estado de cuenta
     Y eliminamos el monedero
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
+    Y hagamos la busqueda de los datos en el CDP del evento    ux_estado_cuenta_view
+    Entonces podremos ver que la estructura del evento en cuestion es correcta
 
-T - FDA APP - Android - application.getMonedero
+T - FDA APP - Android - application.get_monedero
     Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
     Cuando hagamos login en el aplicativo
     Y saltemos la promocion inicial
-    Y entramos a la seccion de monedero del ahorro
+    Y entramos a la seccion de monedero del ahorro antes
     Y en la seccion monedero damos tap en Obtener Monedero
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
+    Y hagamos la busqueda de los datos en el CDP del evento    get_monedero
+    Entonces podremos ver que la estructura del evento en cuestion es correcta
 
-T - FDA APP - Android - application.getMonederoLater
+T - FDA APP - Android - application.get_monedero_later
     Dado que ingresamos a la aplicacion de Farmacias del ahorro y pasamos el onboarding
     Cuando hagamos login en el aplicativo
     Y saltemos la promocion inicial
-    Y entramos a la seccion de monedero del ahorro
+    Y entramos a la seccion de monedero del ahorro antes
     Y en la seccion monedero damos tap en En otro momento
-    #Y hagamos la busqueda de los datos en el CDP del evento    ux_edit_carrito
-    #Entonces podremos ver que la estructura del evento en cuestion es correcta
+    Y hagamos la busqueda de los datos en el CDP del evento    get_monedero_later
+    Entonces podremos ver que la estructura del evento en cuestion es correcta

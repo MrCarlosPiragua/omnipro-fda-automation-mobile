@@ -1,0 +1,83 @@
+{
+  "_fahorro": {
+    "appInteractionAttributes": {
+      "environment": "prod"
+    },
+    "appInteractionEvents": {
+      "ditectionTap": {
+        "value": 1
+      }
+    },
+    "appInformation": {
+      "appStateDetails": {
+        "screenName": "home"
+      }
+    }
+  },
+  "environment": {
+    "ipV4": "181.78.73.185",
+    "browserDetails": {
+      "userAgent": "Mozilla/5.0 (Linux; U; Android 14; en-US; sdk_gphone64_arm64 Build/UE1A.230829.036.A4)"
+    },
+    "connectionType": "wireless_wifi"
+  },
+  "application": {
+    "version": "9.12.1(12)"
+  },
+  "identityMap": {
+    "ECID": [
+      {
+        "id": "08449257035926258466570986632444394627",
+        "authenticatedState": "ambiguous",
+        "primary": true
+      }
+    ],
+    "GAID": [
+      {
+        "id": "e4ab4ed7-0120-4689-82fe-1dfdf8c360c9",
+        "authenticatedState": "ambiguous",
+        "primary": false
+      }
+    ],
+    "Email_LC_SHA256": [
+      {
+        "id": "38dd81e37e03e522ced4a234b904cef74b2689ff3bb727ef2bada87ed5e3ee13",
+        "authenticatedState": "ambiguous",
+        "primary": false
+      }
+    ],
+    "deviceId": [
+      {
+        "id": "2b0911b3bd3708ee7dda13a903606bd1f754836b6181f07817802b998a76adda",
+        "authenticatedState": "ambiguous",
+        "primary": false
+      }
+    ]
+  },
+  "eventType": "application.direction_tap",
+  "_id": "edbb37c0-1d61-4198-b813-661cc6e62d74",
+  "placeContext": {
+    "geo": {
+      "_schema": {
+        "latitude": 6.13,
+        "longitude": -74.51
+      },
+      "stateProvince": "CO-BOY",
+      "city": "Las Quinchas",
+      "countryCode": "CO",
+      "postalCode": "155207",
+      "dmaID": 0
+    },
+    "ianaTimezone": "America/Bogota",
+    "IPLocalTimezoneOffset": -300,
+    "IPLocalTime": "2025-09-15T20:28:09.447-05:00"
+  },
+  "device": {
+    "_fahorro": {
+      "AppECID": "08449257035926258466570986632444394627",
+      "AppGAID": "e4ab4ed7-0120-4689-82fe-1dfdf8c360c9",
+      "deviceId": "2b0911b3bd3708ee7dda13a903606bd1f754836b6181f07817802b998a76adda"
+    }
+  },
+  "timestamp": "2025-09-16T01:28:09.447Z"
+}

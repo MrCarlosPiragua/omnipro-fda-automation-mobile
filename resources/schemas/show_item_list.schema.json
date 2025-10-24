@@ -1,61 +1,51 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Fahorro Event - show_item_list (mínimo requerido)",
+  "title": "entity - show_item_list (/home_route)",
   "type": "object",
-  "required": ["entity", "commerce"],
+  "required": ["_fahorro"],
   "additionalProperties": true,
   "properties": {
-    "entity": {
+    "_fahorro": {
       "type": "object",
-      "required": ["_fahorro"],
+      "required": ["appInteractionAttributes", "appInteractionEvents", "appInformation"],
       "additionalProperties": true,
       "properties": {
-        "_fahorro": {
+        "appInteractionAttributes": {
           "type": "object",
-          "required": [
-            "appInteractionEvents",
-            "appInformation",
-            "appInteractionAttributes"
-          ],
+          "required": ["listId", "listName", "environment"],
           "additionalProperties": true,
           "properties": {
-            "appInteractionEvents": {
+            "listId": { "type": "string" },
+            "listName": { "type": "string" },
+            "environment": { "type": "string" }
+          }
+        },
+        "appInteractionEvents": {
+          "type": "object",
+          "required": ["showItemList"],
+          "additionalProperties": true,
+          "properties": {
+            "showItemList": {
               "type": "object",
-              "required": ["showItemList"],
+              "required": ["value"],
               "additionalProperties": true,
               "properties": {
-                "showItemList": {
-                  "type": "object",
-                  "required": ["value"],
-                  "additionalProperties": true,
-                  "properties": {
-                    "value": { "type": "number" }
-                  }
-                }
+                "value": { "type": "number" }
               }
-            },
-            "appInformation": {
+            }
+          }
+        },
+        "appInformation": {
+          "type": "object",
+          "required": ["appStateDetails"],
+          "additionalProperties": true,
+          "properties": {
+            "appStateDetails": {
               "type": "object",
-              "required": ["appStateDetails"],
+              "required": ["screenName"],
               "additionalProperties": true,
               "properties": {
-                "appStateDetails": {
-                  "type": "object",
-                  "required": ["screenName"],
-                  "additionalProperties": true,
-                  "properties": {
-                    "screenName": { "type": "string" }
-                  }
-                }
-              }
-            },
-            "appInteractionAttributes": {
-              "type": "object",
-              "required": ["listName", "listId"],
-              "additionalProperties": true,
-              "properties": {
-                "listName": { "type": "string" },
-                "listId": { "type": "string" }
+                "screenName": { "type": "string" }
               }
             }
           }
@@ -64,21 +54,19 @@
     },
     "commerce": {
       "type": "object",
-      "required": ["order"],
       "additionalProperties": true,
       "properties": {
         "order": {
           "type": "object",
-          "required": ["currencyCode", "_fahorro"],
+          "required": ["currencyCode"],
           "additionalProperties": true,
           "properties": {
             "currencyCode": { "type": "string" },
             "_fahorro": {
               "type": "object",
-              "required": ["totalProducts"],
               "additionalProperties": true,
               "properties": {
-                "totalProducts": { "type": "number" }
+                "totalProducts": { "type": "integer" }
               }
             }
           }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CheckoutEvents" tests="24" errors="0" failures="0" skipped="0" time="3502.840" timestamp="2025-09-18T00:05:39.950069">
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.delete_shopping_cart" time="107.043">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.see_more_list" time="175.184">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.show_item_list" time="175.440">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.view_item_list" time="175.541">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.select_item" time="68.213">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.view_item" time="69.583">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.share" time="71.239">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.add_to_wishlist" time="107.141">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.view_wish_list" time="107.131">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.remove_from_wish_list" time="107.090">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.add_to_cart" time="226.503">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.remove_from_cart" time="125.572">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.ux_mi_carrito" time="116.042">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.ux_edit_carrito" time="122.265">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.view_cart" time="116.075">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.add_shipping_info" time="256.004">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.change_direction" time="260.264">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.add_direction" time="140.143">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.begin_checkout" time="255.379">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.add_payment_method" time="147.842">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.view_promotion" time="176.677">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.select_promotion" time="54.620">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.invalid_cart" time="154.524">
+</testcase>
+<testcase classname="CheckoutEvents" name="T - FDA APP - Android - application.select_direction" time="187.039">
+</testcase>
+</testsuite>

@@ -1,41 +1,45 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "skip_tap",
+  "title": "application.view_promotion (mínimo)",
   "type": "object",
-  "required": ["_fahorro"],
   "additionalProperties": true,
+  "required": ["eventType", "_id", "timestamp", "_fahorro"],
   "properties": {
+    "eventType": { "type": "string", "const": "application.view_promotion" },
+    "_id": { "type": "string" },
+    "timestamp": { "type": "string" },
+
     "_fahorro": {
       "type": "object",
-      "required": ["appInteractionEvents", "appInformation"],
       "additionalProperties": true,
+      "required": ["appInformation", "appInteractionEvents"],
       "properties": {
-        "appInteractionEvents": {
+        "appInformation": {
           "type": "object",
-          "required": ["skipTap"],
           "additionalProperties": true,
+          "required": ["appStateDetails"],
           "properties": {
-            "skipTap": {
+            "appStateDetails": {
               "type": "object",
-              "required": ["value"],
               "additionalProperties": true,
+              "required": ["screenName"],
               "properties": {
-                "value": { "type": "number" }
+                "screenName": { "type": "string" }
               }
             }
           }
         },
-        "appInformation": {
+        "appInteractionEvents": {
           "type": "object",
-          "required": ["appStateDetails"],
           "additionalProperties": true,
+          "required": ["viewPromotion"],
           "properties": {
-            "appStateDetails": {
+            "viewPromotion": {
               "type": "object",
-              "required": ["screenName"],
               "additionalProperties": true,
+              "required": ["value"],
               "properties": {
-                "screenName": { "type": "string" }
+                "value": { "type": "integer" }
               }
             }
           }

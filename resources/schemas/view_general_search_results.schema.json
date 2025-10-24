@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "entity - screen_view",
+  "title": "entity - view_general_search_results",
   "type": "object",
-  "required": ["_fahorro"],
+  "required": ["_fahorro", "search", "productListItems"],
   "additionalProperties": true,
   "properties": {
     "_fahorro": {
@@ -12,10 +12,10 @@
       "properties": {
         "appInteractionEvents": {
           "type": "object",
-          "required": ["screenView"],
+          "required": ["viewGeneralSearchResults"],
           "additionalProperties": true,
           "properties": {
-            "screenView": {
+            "viewGeneralSearchResults": {
               "type": "object",
               "required": ["value"],
               "additionalProperties": true,
@@ -32,20 +32,98 @@
           "properties": {
             "appStateDetails": {
               "type": "object",
-              "required": [
-                "screenName",
-                "screenReferring",
-                "screenType",
-                "statusLogin",
-                "screenCategory"
-              ],
+              "required": ["screenName"],
               "additionalProperties": true,
               "properties": {
-                "screenName": { "type": "string" },
-                "screenReferring": { "type": "string" },
-                "screenType": { "type": "string" },
-                "statusLogin": { "type": "boolean" },
-                "screenCategory": { "type": "string" }
+                "screenName": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "search": {
+      "type": "object",
+      "required": ["keywords", "_fahorro"],
+      "additionalProperties": true,
+      "properties": {
+        "keywords": { "type": "string" },
+        "_fahorro": {
+          "type": "object",
+          "required": ["quantityResults", "searchType"],
+          "additionalProperties": true,
+          "properties": {
+            "quantityResults": { "type": "integer" },
+            "searchType": { "type": "string" }
+          }
+        }
+      }
+    },
+
+    "productListItems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "SKU", "priceTotal", "discountAmount", "_fahorro"],
+        "additionalProperties": true,
+        "properties": {
+          "product": { "type": "string" },
+          "name": { "type": "string" },
+          "SKU": { "type": "string" },
+          "priceTotal": { "type": "number" },
+          "discountAmount": { "type": "number" },
+
+          "_fahorro": {
+            "type": "object",
+            "required": [
+              "productBrand",
+              "position",
+              "productPrice",
+              "originalPrice",
+              "taxAmount",
+              "ownBrand",
+              "requiresRecipe"
+            ],
+            "additionalProperties": true,
+            "properties": {
+              "productFeatures": { "type": ["string", "null"] },
+              "productIngredients": { "type": ["string", "null"] },
+              "productBrand": { "type": "string" },
+              "productAvailable": { "type": "boolean" },
+              "subscription": { "type": "boolean" },
+              "position": { "type": "string" },
+              "taxAmount": { "type": "number" },
+              "productPrice": { "type": "number" },
+              "originalPrice": { "type": "number" },
+              "ownBrand": { "type": "boolean" },
+              "requiresRecipe": { "type": "boolean" },
+              "productPromotions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "appliedPromotion": { "type": "string" },
+                    "promoType": { "type": "string" },
+                    "discount": { "type": "number" },
+                    "promotionId": { "type": ["string", "number"] }
+                  }
+                }
+              }
+            }
+          },
+
+          "productCategories": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["categoryName"],
+              "additionalProperties": true,
+              "properties": {
+                "categoryName": { "type": "string" },
+                "categoryPath": { "type": "string" },
+                "categoryID": { "type": "string" }
               }
             }
           }

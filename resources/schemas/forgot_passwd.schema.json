@@ -1,21 +1,21 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "openning_app",
+  "title": "forgot_passwd",
   "type": "object",
   "required": ["_fahorro"],
   "additionalProperties": true,
   "properties": {
     "_fahorro": {
       "type": "object",
-      "required": ["appInteractionEvents", "appInformation", "appInteractionAttributes"],
+      "required": ["appInteractionEvents", "appInformation"],
       "additionalProperties": true,
       "properties": {
         "appInteractionEvents": {
           "type": "object",
-          "required": ["openningApp"],
+          "required": ["forgotPasswd"],
           "additionalProperties": true,
           "properties": {
-            "openningApp": {
+            "forgotPasswd": {
               "type": "object",
               "required": ["value"],
               "additionalProperties": true,
@@ -38,16 +38,6 @@
                 "screenName": { "type": "string" }
               }
             }
-          }
-        },
-        "appInteractionAttributes": {
-          "type": "object",
-          "required": ["deepLinkSource", "deepLinkMedium", "deepLinkCampaign"],
-          "additionalProperties": true,
-          "properties": {
-            "deepLinkSource": { "type": "string" },
-            "deepLinkMedium": { "type": "string" },
-            "deepLinkCampaign": { "type": "string" }
           }
         }
       }

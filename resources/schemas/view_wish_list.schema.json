@@ -1,34 +1,26 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "entity - see_more_list (homeWeeklySuggestions)",
+  "title": "entity - view_wish_list",
   "type": "object",
-  "required": ["_fahorro"],
   "additionalProperties": true,
+  "required": ["_fahorro", "eventType", "productListItems"],
   "properties": {
+    "eventType": { "type": "string", "const": "application.view_wish_list" },
+
     "_fahorro": {
       "type": "object",
-      "required": ["appInteractionEvents", "appInformation", "appInteractionAttributes"],
       "additionalProperties": true,
+      "required": ["appInteractionEvents", "appInformation"],
       "properties": {
-        "appInteractionAttributes": {
-          "type": "object",
-          "required": ["listId", "listName", "environment"],
-          "additionalProperties": true,
-          "properties": {
-            "listId": { "type": "string" },
-            "listName": { "type": "string" },
-            "environment": { "type": "string" }
-          }
-        },
         "appInteractionEvents": {
           "type": "object",
-          "required": ["seeMoreList"],
           "additionalProperties": true,
+          "required": ["viewWishList"],
           "properties": {
-            "seeMoreList": {
+            "viewWishList": {
               "type": "object",
-              "required": ["value"],
               "additionalProperties": true,
+              "required": ["value"],
               "properties": {
                 "value": { "type": "number" }
               }
@@ -37,13 +29,13 @@
         },
         "appInformation": {
           "type": "object",
-          "required": ["appStateDetails"],
           "additionalProperties": true,
+          "required": ["appStateDetails"],
           "properties": {
             "appStateDetails": {
               "type": "object",
-              "required": ["screenName"],
               "additionalProperties": true,
+              "required": ["screenName"],
               "properties": {
                 "screenName": { "type": "string" }
               }
@@ -52,13 +44,13 @@
         }
       }
     },
+
     "commerce": {
       "type": "object",
       "additionalProperties": true,
       "properties": {
         "order": {
           "type": "object",
-          "required": ["currencyCode"],
           "additionalProperties": true,
           "properties": {
             "currencyCode": { "type": "string" }
@@ -66,62 +58,75 @@
         }
       }
     },
+
     "productListItems": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["product", "name", "SKU", "priceTotal", "discountAmount", "_fahorro"],
         "additionalProperties": true,
+        "required": ["_fahorro", "product", "priceTotal", "name", "discountAmount", "SKU"],
         "properties": {
-          "product": { "type": "string" },
-          "name": { "type": "string" },
-          "SKU": { "type": "string" },
-          "priceTotal": { "type": "number" },
-          "discountAmount": { "type": "number" },
-          "productCategories": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "additionalProperties": true,
-              "properties": {
-                "categoryName": { "type": "string" }
-              }
-            }
-          },
           "_fahorro": {
             "type": "object",
-            "required": ["listId", "listName", "position", "productPrice", "originalPrice", "taxAmount", "requiresRecipe"],
             "additionalProperties": true,
+            "required": [
+              "productBrand",
+              "position",
+              "productPrice",
+              "originalPrice",
+              "taxAmount",
+              "ownBrand",
+              "requiresRecipe"
+            ],
             "properties": {
-              "listId": { "type": "string" },
-              "listName": { "type": "string" },
+              "productBrand": { "type": "string" },
               "position": { "type": "string" },
               "productPrice": { "type": "number" },
               "originalPrice": { "type": "number" },
               "taxAmount": { "type": "number" },
-              "requiresRecipe": { "type": "boolean" },
-              "productBrand": { "type": "string" },
-              "productAvailable": { "type": "boolean" },
               "ownBrand": { "type": "boolean" },
-              "subscription": { "type": "boolean" },
+              "requiresRecipe": { "type": "boolean" },
+              "productAvailable": { "type": "boolean" },
               "productFeatures": { "type": "string" },
               "productIngredients": { "type": "string" },
+              "subscription": { "type": "boolean" },
               "productPromotions": {
                 "type": "array",
                 "items": {
                   "type": "object",
                   "additionalProperties": true,
-                  "required": ["appliedPromotion", "discount", "promoType"],
+                  "required": ["discount", "promoType", "appliedPromotion"],
                   "properties": {
-                    "appliedPromotion": { "type": "string" },
                     "discount": { "type": "number" },
                     "promoType": { "type": "string" },
-                    "promotionId": { "oneOf": [{ "type": "string" }, { "type": "number" }] }
+                    "appliedPromotion": { "type": "string" },
+                    "promotionId": { "type": "string" }
                   }
                 }
               }
             }
-          }
+          },
+
+          "productCategories": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": ["categoryName", "categoryPath", "categoryID"],
+              "properties": {
+                "categoryName": { "type": "string" },
+                "categoryPath": { "type": "string" },
+                "categoryID": { "type": "string" }
+              }
+            }
+          },
+
+          "product": { "type": "string" },
+          "priceTotal": { "type": "number" },
+          "name": { "type": "string" },
+          "discountAmount": { "type": "number" },
+          "SKU": { "type": "string" }
         }
       }
     }

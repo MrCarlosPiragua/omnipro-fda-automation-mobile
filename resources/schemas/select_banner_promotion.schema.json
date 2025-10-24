@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "openning_app",
+  "title": "select_banner_promotion",
   "type": "object",
   "required": ["_fahorro"],
   "additionalProperties": true,
@@ -12,10 +12,10 @@
       "properties": {
         "appInteractionEvents": {
           "type": "object",
-          "required": ["openningApp"],
+          "required": ["selectBannerPromotion"],
           "additionalProperties": true,
           "properties": {
-            "openningApp": {
+            "selectBannerPromotion": {
               "type": "object",
               "required": ["value"],
               "additionalProperties": true,
@@ -42,12 +42,12 @@
         },
         "appInteractionAttributes": {
           "type": "object",
-          "required": ["deepLinkSource", "deepLinkMedium", "deepLinkCampaign"],
+          "required": ["categoryPromotionName", "promotionName", "appliedPromotion"],
           "additionalProperties": true,
           "properties": {
-            "deepLinkSource": { "type": "string" },
-            "deepLinkMedium": { "type": "string" },
-            "deepLinkCampaign": { "type": "string" }
+            "categoryPromotionName": { "type": "string" },
+            "promotionName": { "type": "string" },
+            "appliedPromotion": { "type": "string" }
           }
         }
       }

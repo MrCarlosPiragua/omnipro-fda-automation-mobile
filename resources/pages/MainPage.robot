@@ -54,8 +54,9 @@ Resource    ../../resources/support/actionsUtils.robot
 ...    BOTON_RED_SOCIAL_FACEBOOK=xpath=//android.widget.ScrollView/android.widget.ImageView[1]
 ...    BOTON_RED_SOCIAL_WHATSAPP=xpath=//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ImageView[2]
 ...    NO_HAY_ARTICULOS_DISPONIBLES=xpath=//android.view.View[@content-desc="Lo sentimos, alguno de los artículos no están disponibles, favor de ajustar la cantidad en el carrito."]
-
-&{HOME_IOS_LOCATORS}
+...    ENVIO_A_DOMICILIO=accessibility_id=Envío a domicilio
+...    CONFIRMAR_ENVIO_A_DOMICILIO=accessibility_id=Si
+...    AGREGAR_UNA_DIRECCION=xpath=(//android.view.View)[11]
 
 *** Keywords ***
 _locator
@@ -157,8 +158,18 @@ Y elimino una unidad del producto en el carrito
 
 Y intento cambiar el direccion de envio
     ${CAMBIAR_DIRECCION_ENVIO}=    _locator    CAMBIAR_DIRECCION_ENVIO
+    ${ENVIO_A_DOMICILIO}=    _locator    ENVIO_A_DOMICILIO
+    ${CONFIRMAR_ENVIO_A_DOMICILIO}=    _locator    CONFIRMAR_ENVIO_A_DOMICILIO
+    ${AGREGAR_UNA_DIRECCION}=    _locator    AGREGAR_UNA_DIRECCION
     Scroll Down    ${CAMBIAR_DIRECCION_ENVIO}
     Tap    ${CAMBIAR_DIRECCION_ENVIO}    duration=0.5s
+    Sleep    3s
+    Tap    ${ENVIO_A_DOMICILIO}    duration=0.5s
+    Sleep    3s
+    Tap    ${CONFIRMAR_ENVIO_A_DOMICILIO}    duration=0.5s
+    Sleep    3s
+    Tap    ${AGREGAR_UNA_DIRECCION}    duration=0.5s
+    Sleep    3s
 
 Y procedemos con el pago
     ${BOTON_PROCEDER_CON_EL_PAGO}=    _locator    BOTON_PROCEDER_CON_EL_PAGO
@@ -194,11 +205,13 @@ Y intentemos seleccionar una direccion de envio
     ${SELECCIONAR_DIRECCION_ENVIO}=    _locator    SELECCIONAR_DIRECCION_ENVIO
     Wait Until Element Is Visible    ${SELECCIONAR_DIRECCION_ENVIO}    10s
     Tap    ${SELECCIONAR_DIRECCION_ENVIO}    duration=0.5s
+    Sleep    2s
 
-Y seleccionamos la direccion Otro
+Y seleccionamos la otra direccion 
     ${DIRECCION_OTRO}=    _locator    DIRECCION_OTRO
     Wait Until Element Is Visible    ${DIRECCION_OTRO}    10s
     Tap    ${DIRECCION_OTRO}    duration=0.5s
+    Sleep    2s
 
 Y vamos a la seccion de ${tapCuentaMenu}
     IF    "${tapCuentaMenu}" == "Cerrar Sesion"
@@ -250,11 +263,6 @@ Y lo eliminamos de la lista de deseados
     Wait Until Element Is Visible    ${BOTON_ELIMINAR_ITEM_2_DE_LA_LISTA_DE_DESEADOS}    5s
     Tap    ${BOTON_ELIMINAR_ITEM_2_DE_LA_LISTA_DE_DESEADOS}    duration=0.5s
     Sleep    8s
-
-Y seleccionamos el metodo de pago Efectivo al Recibir
-    ${METODO_DE_PAGO_EFECTIVO_AL_RECIBIR}=    _locator    METODO_DE_PAGO_EFECTIVO_AL_RECIBIR
-    Wait Until Element Is Visible    ${METODO_DE_PAGO_EFECTIVO_AL_RECIBIR}    10s
-    Tap    ${METODO_DE_PAGO_EFECTIVO_AL_RECIBIR}    duration=0.5s
 
 Y continuamos sin propina si se solicita
     ${CONTINUAR_SIN_PROPINA}=    _locator    CONTINUAR_SIN_PROPINA
